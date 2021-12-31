@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <section>
+        <h1>My Library</h1>
+    </section>
+    <button onclick="openBookForm()">Add Book</button>
+    <section id="book-form-container">
+        <form id="book-form" action="">
+            <h3>Add New Book</h3>
+            <label for="book-name">Book Name:</label>
+            <input id="book-name" type="text">
+            <label for="book-author">Author:</label>
+            <input id="book-author" type="text">
+            <label for="book-pages">Number of pages:</label>
+            <input id="book-pages" type="number" name="" id="">
+            <label for="book-read-status">Read:</label>
+            <input id="book-status" type="checkbox" name="" id="" value="false">
+            <button type="button" onClick="newBook()">Add</button>
+            <button type="button" onclick="closeBookForm()">Close
+            </button>
+        </form>
+    </section>
+    <section>
+        <h2>Books</h2>
+        <div id="books-section"></div>
+    </section>
+
+</body>
+
+</html>
