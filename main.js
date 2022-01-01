@@ -24,9 +24,11 @@ function newBook() {
     bookPages.value,
     bookStatus.checked
   );
-  addBookToLibrary(book);
-  reloadBooks(book);
-  clearForm();
+  if (bookName.value != "" && bookAuthor.value != "" && bookPages.value != "") {
+    addBookToLibrary(book);
+    reloadBooks(book);
+    clearForm();
+  }
 }
 
 function createCard(book) {
