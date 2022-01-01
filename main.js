@@ -28,6 +28,9 @@ function newBook() {
     addBookToLibrary(book);
     reloadBooks(book);
     clearForm();
+    closeBookForm();
+  } else {
+    alert("Book name, author or pages are empty");
   }
 }
 
