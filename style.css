@@ -60,3 +60,13 @@ h2 {
   text-align: center;
   margin-top: 50px;
 }
+
+.read-button {
+  height: 40px;
+  width: 40px;
+  padding-left: 6px;
+}
+
+.delete-button {
+  margin-top: 50px;
+}

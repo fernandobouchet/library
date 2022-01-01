@@ -40,26 +40,44 @@ function createCard(book) {
   const newBookName = document.createElement("h3");
   const newBookAuthor = document.createElement("h3");
   const newBookPages = document.createElement("h3");
-  const newBookStatus = document.createElement("input");
-  newBookStatus.type = "checkbox";
+  const newBookRead = document.createElement("h3");
+  const newBookStatus = document.createElement("button");
+  newBookStatus.className = "read-button";
   newBookStatus.textContent = "Read";
   const deleteButton = document.createElement("button");
   deleteButton.className = "delete-button";
   newBookName.textContent = `Name: ${book.title}`;
   newBookAuthor.textContent = `Author: ${book.author}`;
   newBookPages.textContent = `Pages: ${book.pages}`;
-  newBookStatus.textContent = `Read Status: ${book.read}`;
+  newBookRead.textContent = "Read: ";
+  if (book.read === false) {
+    book.read = "No";
+  } else if (book.read === true) {
+    book.read = "Yes";
+  }
+  newBookStatus.textContent = `${book.read}`;
   deleteButton.textContent = "Delete";
+  newBookRead.appendChild(newBookStatus);
   newBookDiv.appendChild(newBookName);
   newBookDiv.appendChild(newBookAuthor);
   newBookDiv.appendChild(newBookPages);
-  newBookDiv.appendChild(newBookStatus);
+  newBookDiv.appendChild(newBookRead);
   newBookDiv.appendChild(deleteButton);
 
   booksSection.appendChild(newBookDiv);
 
   deleteButton.addEventListener("click", () => {
     removeBook(book);
+  });
+
+  newBookStatus.addEventListener("click", () => {
+    if (newBookStatus.textContent === "No") {
+      newBookStatus.textContent = "Yes";
+      book.read = true;
+    } else {
+      newBookStatus.textContent = "No";
+      book.read = false;
+    }
   });
 }
 
