@@ -19,6 +19,8 @@ body {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border: solid;
+  border-radius: 15px;
 }
 
 .book-div {
@@ -37,7 +39,12 @@ button {
   width: 100px;
   padding: 10px;
   border-radius: 15px;
+  border-style: solid;
   border-color: white;
+}
+
+button:hover {
+  border-color: #f4a261;
 }
 
 .form-div {
@@ -47,4 +54,9 @@ button {
 #books-section {
   display: flex;
   flex-wrap: wrap;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 50px;
 }

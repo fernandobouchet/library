@@ -4,13 +4,17 @@ const bookName = document.getElementById("book-name");
 const bookAuthor = document.getElementById("book-author");
 const bookPages = document.getElementById("book-pages");
 const bookStatus = document.getElementById("book-status");
+const deleteBtn = document.querySelectorAll(".delete-button");
+
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  (this.title = title),
-    (this.author = author),
-    (this.pages = pages),
-    (this.read = read);
+class Book {
+  constructor(title, author, pages, read) {
+    (this.title = title),
+      (this.author = author),
+      (this.pages = pages),
+      (this.read = read);
+  }
 }
 
 function newBook() {
@@ -20,43 +24,56 @@ function newBook() {
     bookPages.value,
     bookStatus.checked
   );
-  console.log(book);
   addBookToLibrary(book);
-  addBook(book);
+  reloadBooks(book);
   clearForm();
 }
 
-function addBook(book) {
+function createCard(book) {
   const newBookDiv = document.createElement("div");
   newBookDiv.className = "book-div";
   const newBookName = document.createElement("h3");
   const newBookAuthor = document.createElement("h3");
   const newBookPages = document.createElement("h3");
-  const newBookStatus = document.createElement("h3");
+  const newBookStatus = document.createElement("input");
+  newBookStatus.type = "checkbox";
+  newBookStatus.textContent = "Read";
+  const deleteButton = document.createElement("button");
+  deleteButton.className = "delete-button";
   newBookName.textContent = `Name: ${book.title}`;
   newBookAuthor.textContent = `Author: ${book.author}`;
   newBookPages.textContent = `Pages: ${book.pages}`;
   newBookStatus.textContent = `Read Status: ${book.read}`;
+  deleteButton.textContent = "Delete";
   newBookDiv.appendChild(newBookName);
   newBookDiv.appendChild(newBookAuthor);
   newBookDiv.appendChild(newBookPages);
   newBookDiv.appendChild(newBookStatus);
+  newBookDiv.appendChild(deleteButton);
 
   booksSection.appendChild(newBookDiv);
+
+  deleteButton.addEventListener("click", () => {
+    removeBook(book);
+  });
+}
+
+function removeBook(book) {
+  myLibrary.splice(myLibrary.indexOf(book), 1);
+  reloadBooks();
 }
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function removeBookFromLibrary(book) {
-  myLibrary.pull(this.book);
+function reloadBooks() {
+  removeBooks();
+  myLibrary.forEach((book) => createCard(book));
 }
 
-function showBooks() {
-  for (let i = 0; i < myLibrary.length; i++) {
-    return myLibrary[i];
-  }
+function removeBooks() {
+  document.querySelectorAll(".book-div").forEach((book) => book.remove());
 }
 
 function openBookForm() {
@@ -71,5 +88,5 @@ function clearForm() {
   (bookName.value = ""),
     (bookAuthor.value = ""),
     (bookPages.value = ""),
-    (bookStatus.value = "");
+    (bookStatus.checked = "");
 }
